@@ -1,0 +1,5 @@
+{
+  "name": "Créateur de Ballon Personnalisé",
+  "description": "Une application web pour concevoir et visualiser des ballons personnalisés avec du texte et des images, enrichie par des suggestions créatives de l'IA pour rendre chaque occasion spéciale.",
+  "requestFramePermissions": []
+}
