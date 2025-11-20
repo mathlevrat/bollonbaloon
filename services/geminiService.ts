@@ -1,15 +1,17 @@
 
 import { GoogleGenAI } from "@google/genai";
 
-if (!process.env.API_KEY) {
+let ai: GoogleGenAI | null = null;
+
+if (process.env.API_KEY) {
+  ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+} else {
   console.warn("API_KEY environment variable not set. AI features will not work.");
 }
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
-
 export const generateBalloonText = async (occasion: string): Promise<string> => {
-  if (!process.env.API_KEY) {
-    return "Clé API manquante.";
+  if (!ai) {
+    throw new Error("La configuration de l'API Gemini est manquante.");
   }
   
   try {
